@@ -12,7 +12,7 @@ class FacebookContainer extends React.Component {
       userId: "",
       name: "",
       email: "",
-      picture: ""
+      picture: "",
     };
     this.componentClicked = this.componentClicked.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
@@ -23,7 +23,6 @@ class FacebookContainer extends React.Component {
   }
 
   responseFacebook(response) {
-    console.log(response);
     this.props.fetchUserFacebook(response.email);
   }
 
@@ -47,15 +46,15 @@ class FacebookContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUserFacebook: item => {
+    fetchUserFacebook: (item) => {
       dispatch(fetchUserFacebook(item));
-    }
+    },
   };
 };
 

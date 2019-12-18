@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(cookieParser());
 app.use(
   session({
-    secret: "pepinillo",
+    secret: "secreto",
     resave: true,
     saveUninitialized: true
   })
@@ -25,12 +25,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 // serialize: how we save the user and stored in session object by express-session
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
 // deserialize: how we look for the user
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function (id, done) {
   User.findByPk(id).then(user => done(null, user));
 });
 passport.use(
@@ -39,7 +39,7 @@ passport.use(
       usernameField: "email", // input name for username
       passwordField: "password" // input name for password
     },
-    function(inputEmail, inputPassword, done) {
+    function (inputEmail, inputPassword, done) {
       User.findOne({ where: { email: inputEmail } }) // searching for the User
         .then(user => {
           console.log(user);

@@ -1,9 +1,7 @@
-
 import React from "react";
 import { connect } from "react-redux";
 import { fetchProducts } from "../store/actions/CategoriesAction";
 import FilterCategory from "../components/FilterCategory";
-
 
 import { addItem } from "../store/actions/orderAction";
 
@@ -18,7 +16,6 @@ class FilterCategoryContainer extends React.Component {
   }
   handleAdd(e) {
     e.preventDefault();
-    console.log(e.target);
     addItem(e.currentTarget.id, this.props.user.id);
   }
   render() {
@@ -29,28 +26,29 @@ class FilterCategoryContainer extends React.Component {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          flexWrap: "wrap"
+          flexWrap: "wrap",
         }}
       >
-        <FilterCategory products={this.props.products}
-          handleAdd={this.handleAdd} />
+        <FilterCategory
+          products={this.props.products}
+          handleAdd={this.handleAdd}
+        />
       </div>
     );
   }
 }
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchProducts: item => {
+    fetchProducts: (item) => {
       dispatch(fetchProducts(item));
-    }
+    },
   };
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   products: state.filterReducer.productsCategory,
 
-
-  user: state.userReducer.user
+  user: state.userReducer.user,
 });
 
 export default connect(

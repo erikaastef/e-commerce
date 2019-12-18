@@ -7,7 +7,7 @@ import {
   addOne,
   minusOne,
   clickNewAddress,
-  fetchAddress
+  fetchAddress,
 } from "../store/actions/orderAction";
 
 import { connect } from "react-redux";
@@ -17,7 +17,7 @@ class OrderContainer extends Component {
     super(props);
     this.state = {
       confirm: false,
-      address: ""
+      address: "",
     };
     this.handleSum = this.handleSum.bind(this);
     this.handleSubst = this.handleSubst.bind(this);
@@ -28,28 +28,23 @@ class OrderContainer extends Component {
     this.handleChangeAddress = this.handleChangeAddress.bind(this);
   }
   componentDidMount() {
-    console.log(this.props.user.id, "user pasado a orderc");
     this.props.fetchOrder(this.props.match.params.userId);
     this.props.fetchAddress(this.state.address);
     this.props.order;
   }
   handleSum(e) {
     e.preventDefault();
-    console.log(this.props.order, "la ordeeer");
     this.props.addOne(e.currentTarget.id, this.props.user.id);
 
     console.log(this.props.order, "la ordeeer despues de añadir");
   }
   handleSubst(e) {
     e.preventDefault();
-    console.log(this.props.order, "la ordeeer");
     this.props.minusOne(e.currentTarget.id, this.props.user.id);
-
-    console.log(this.props.order, "la ordeeer despues de restar");
   }
   handleClick() {
     this.setState({
-      confirm: true
+      confirm: true,
     });
   }
 
@@ -63,9 +58,7 @@ class OrderContainer extends Component {
   }
 
   handleChangeAddress(e) {
-    console.log("entroooooooo");
     this.setState({ address: e.target.value });
-    console.log(this.state.address);
   }
 
   render() {
@@ -91,17 +84,17 @@ class OrderContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     order: state.orderReducer.order,
     user: state.userReducer.user,
-    clickNewAddressStore: state.orderReducer.clickNewAddress
+    clickNewAddressStore: state.orderReducer.clickNewAddress,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOrder: userId => {
+    fetchOrder: (userId) => {
       dispatch(fetchOrder(userId));
     },
     addOne: (itemId, userId) => {
@@ -113,19 +106,16 @@ const mapDispatchToProps = dispatch => {
     dropOrder: () => {
       dispatch(dropOrder());
     },
-    buyProduct: user => {
+    buyProduct: (user) => {
       dispatch(buyProduct(user));
     },
     clickNewAddress: () => {
       dispatch(clickNewAddress());
     },
-    fetchAddress: item => {
+    fetchAddress: (item) => {
       dispatch(fetchAddress(item));
-    }
+    },
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OrderContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(OrderContainer);

@@ -27,7 +27,7 @@ const productos = [
       "https://t1.rg.ltmcdn.com/es/images/5/8/4/img_empanadas_de_carne_cortada_a_cuchillo_7485_600.jpg",
     country: "Argentina",
     description:
-      "CODIGO ROJO!! NOS QUEDAMOS SIN DESCRIPCIÓN PARA LAS EMPANADAS AAAAAAHHHHHHHHHHHHHHHHHHHHHHHHHH "
+      "CODIGO ROJO!! NOS QUEDAMOS SIN DESCRIPCIÓN PARA LAS EMPANADAS AAAAAAHHHHHHHHHH "
   },
   {
     name: "Ravioles",
@@ -35,7 +35,7 @@ const productos = [
     img: "http://biencasero.clarin.com/advf/imagenes/522748b9dbac2.jpg",
     country: "Argentina",
     description:
-      "Si les soy sincera, no tenia ganas de buscar contenido para los ravioles, aprovechare este espacion para decir que: Karen es lo mas :)"
+      "Si les soy sincera, no tenia ganas de buscar contenido para los ravioles, aprovechare este espacion para decir que: Karen es lo mas "
   },
   {
     name: "taco salad tradicional",
@@ -173,4 +173,4 @@ comment, comentando los bulk de arriba */
 /*4) ESTA NO LA CORRI
  OrderItem.bulkCreate(items).then(() => {
   console.log("created items");
- });  */ 
+ });  */

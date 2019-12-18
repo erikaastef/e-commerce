@@ -19,7 +19,7 @@ class ProductsContainer extends React.Component {
   }
   handleAdd(e) {
     e.preventDefault();
-    console.log(e.target);
+
     addItem(e.target.id, this.props.user.id);
   }
 
@@ -47,8 +47,6 @@ class ProductsContainer extends React.Component {
           padding: "15px",
           flexWrap: "wrap",
           borderRadius: "7px",
-
-
         }}
       >
         <Products
@@ -62,25 +60,21 @@ class ProductsContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   productsState: state.productsReducer.products,
   cargandoBusqueda: state.productsReducer,
-  user: state.userReducer.user
+  user: state.userReducer.user,
 });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     mostrarProductos: () => {
       dispatch(fetchProducts());
     },
-    mostrarBusqueda: item => {
-      console.log(item);
+    mostrarBusqueda: (item) => {
       dispatch(fetchProduct(item));
-    }
+    },
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);
